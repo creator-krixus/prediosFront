@@ -1,0 +1,65 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+.containerImage{
+    width: 800px;
+}
+.containerForm{
+    margin: 0 auto;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+/* .imagenTwo{
+    width: 100%;
+    object-fit: fill;
+} */
+.propietarios{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.cajas {
+    height: 35px;
+    width: 320px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.select{
+    height: 35px;
+    width: 320px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.btn{
+    width: max-content;
+    margin: 0 auto;
+}
+.construcciones{
+    display: flex;
+    flex-direction: column;
+}
+.dataConstrucciones{
+    display: flex;
+    flex-direction: column;
+}
+.terreno{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+@media(max-width:768px) {
+    .imagenTwo{
+        width: 100%;
+        height: 250px;
+        object-fit: fill;
+        margin-bottom: 15px;
+    }
+}
