@@ -9,7 +9,10 @@ export default function Navbar() {
                 <h1>Catastro</h1>
             </Link>
         </div>
-        <div>
+        <div className="styles.btns">
+            <Link href="/predios">
+                <button className={styles.btnRegistro}>Predios</button>
+            </Link>
             <Link href="/singup">
                 <button className={styles.btnRegistro}>Registrar</button>
             </Link>

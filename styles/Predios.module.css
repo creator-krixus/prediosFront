@@ -1,0 +1,9 @@
+.predios{
+    padding: 0 15px;
+    width: 75%;
+}
+@media(max-width:768px) {
+    .predios{
+        width: 100%;
+    }
+}
