@@ -1,14 +1,13 @@
 import styles from '../styles/Card.module.css'
-// import Link from 'next/link';
 
 export default function Card({predio}) {
   return (
     <div className={styles.card}>
-        <h2>Identificador del predio: {predio.id}</h2>
-        <p>Avaluo del predio: {predio.avaluo}</p>
-        <p>Nombre del predio: {predio.nombre}</p>
-        <p>Departamento donde esta ubicado: {predio.departamento}</p>
-        <p>Municipio donde esta ubicado: {predio.municipio}</p>
+        <h2>Identificador del predio:<span className={styles.data}> {predio.id}</span></h2>
+        <p className={styles.title}>Avaluo del predio: <span className={styles.data}> {predio.avaluo}</span></p>
+        <p className={styles.title}>Nombre del predio: <span className={styles.data}> {predio.nombre}</span></p>
+        <p className={styles.title}>Departamento donde esta ubicado: <span className={styles.data}> {predio.departamento}</span></p>
+        <p className={styles.title}>Municipio donde esta ubicado: <span className={styles.data}> {predio.municipio}</span></p>
     </div>
   )
 }

@@ -4,3 +4,11 @@
     margin-bottom: 10px;
     border-radius: 12px;
 }
+.title{
+    font-size: 16px;
+    font-weight: bold;
+}
+.data{
+    text-transform: capitalize;
+    font-weight: 400;
+}
