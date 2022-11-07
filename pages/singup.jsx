@@ -1,6 +1,7 @@
 import Layout from "../component/Layout"
 import styles from '../styles/Singup.module.css'
 import Image from 'next/image'
+import {gql} from 'graphql-request'
 
 export default function singup() {
     const handleSubmit = async (event) => {
@@ -23,62 +24,63 @@ export default function singup() {
         nombre: event.target.nombre.value,
         departamento: event.target.departamento.value,
         municipio: event.target.municipio.value,
-        propietarios: [
-          {
-            propietario:event.target.propietario1.value,
-            tipoPropietario:event.target.tipoPropietario1.value,
-            tipoDocumento:event.target.tipoDocumento1.value,
-            numeroDocumento:event.target.documentoNumero1.value,
-            nombres:event.target.nombreNumero1.value,
-            apellidos:event.target.apellidoNumero1.value,
-            direccion:event.target.direccionNumero1.value,
-            email:event.target.emailNumero1.value,
-            phone:event.target.phoneNumero1.value
-          },
-          {
-            propietario2:event.target.propietario2.value,
-            tipoPropietario:event.target.tipoPropietario2.value,
-            tipoDocumento:event.target.tipoDocumento2.value,
-            numeroDocumento:event.target.documentoNumero2.value,
-            nombres:event.target.nombreNumero2.value,
-            apellidos:event.target.apellidoNumero2.value,
-            direccion:event.target.direccionNumero2.value,
-            email:event.target.emailNumero2.value,
-            phone:event.target.phoneNumero2.value
-          },
-          {
-            propietario3:event.target.propietario3.value,
-            tipoPropietario:event.target.tipoPropietario3.value,
-            tipoDocumento:event.target.tipoDocumento3.value,
-            numeroDocumento:event.target.documentoNumero3.value,
-            nombres:event.target.nombreNumero3.value,
-            apellidos:event.target.apellidoNumero3.value,
-            direccion:event.target.direccionNumero3.value,
-            email:event.target.emailNumero3.value,
-            phone:event.target.phoneNumero3.value
-          },
-        ],
-        construcciones:[{
-          contrucciones:event.target.construcciones.value,
-          pisos:event.target.pisos.value,
-          area:event.target.area.value,
-          construccion:event.target.construccion.value
-        }],
-        terreno:{
-          ubicacion:event.target.terreno.value,
-          fuentesAgua:event.target.fuenteAgua.value,
-          valorComercial:event.target.valorComercial.value
-        }
+        // propietarios: [
+          // {
+          //   propietario:event.target.propietario1.value,
+          //   tipoPropietario:event.target.tipoPropietario1.value,
+          //   tipoDocumento:event.target.tipoDocumento1.value,
+          //   numeroDocumento:event.target.documentoNumero1.value,
+          //   nombres:event.target.nombreNumero1.value,
+          //   apellidos:event.target.apellidoNumero1.value,
+          //   direccion:event.target.direccionNumero1.value,
+          //   email:event.target.emailNumero1.value,
+          //   phone:event.target.phoneNumero1.value
+          // },
+          // {
+          //   propietario2:event.target.propietario2.value,
+          //   tipoPropietario:event.target.tipoPropietario2.value,
+          //   tipoDocumento:event.target.tipoDocumento2.value,
+          //   numeroDocumento:event.target.documentoNumero2.value,
+          //   nombres:event.target.nombreNumero2.value,
+          //   apellidos:event.target.apellidoNumero2.value,
+          //   direccion:event.target.direccionNumero2.value,
+          //   email:event.target.emailNumero2.value,
+          //   phone:event.target.phoneNumero2.value
+          // },
+          // {
+          //   propietario3:event.target.propietario3.value,
+          //   tipoPropietario:event.target.tipoPropietario3.value,
+          //   tipoDocumento:event.target.tipoDocumento3.value,
+          //   numeroDocumento:event.target.documentoNumero3.value,
+          //   nombres:event.target.nombreNumero3.value,
+          //   apellidos:event.target.apellidoNumero3.value,
+          //   direccion:event.target.direccionNumero3.value,
+          //   email:event.target.emailNumero3.value,
+          //   phone:event.target.phoneNumero3.value
+          // },
+        // ],
+        // construcciones:[{
+        //   contrucciones:event.target.construcciones.value,
+        //   pisos:event.target.pisos.value,
+        //   area:event.target.area.value,
+        //   construccion:event.target.construccion.value
+        // }],
+        // terreno:{
+        //   ubicacion:event.target.terreno.value,
+        //   fuentesAgua:event.target.fuenteAgua.value,
+        //   valorComercial:event.target.valorComercial.value
+        // }
       }
       
-      const query = `
-      mutation {
+      const query = gql `
+      mutation
+      createPredio {
         createPredio (createPredioInput:{
-          id: "2bba43d6cb45410295f9f25c070fbe87"
-          avaluo: 123131231
-          nombre: "Eliana"
-          departamento: "antioquia"
-          municipio: "marinilla"
+          id: "${data.id}"
+          avaluo: ${data.avaluo}
+          nombre: "${data.nombre}"
+          departamento: "${data.departamento}"
+          municipio: "${data.municipio}"
         }){
           id
           avaluo
@@ -120,7 +122,7 @@ export default function singup() {
         <label htmlFor="avaluo">Avaluo</label>
         <input className={styles.cajas} type="number" id="avaluo" name="avaluo" required />
 
-        <label htmlFor="nombre">Nombre</label>
+        <label htmlFor="nombre">Nombre del predio</label>
         <input className={styles.cajas} type="text" id="nombre" name="nombre" required />
 
         <label htmlFor="departamento">Departamento</label>
