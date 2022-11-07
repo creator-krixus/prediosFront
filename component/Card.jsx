@@ -10,8 +10,8 @@ export default function Card({predio}) {
         <div>
           <p className={styles.title}>Municipio donde esta ubicado: <span className={styles.data}> {predio.municipio}</span></p>
           <div className={styles.icons}>
-            <i class="fa-solid fa-trash"></i>
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i className="fa-solid fa-trash"></i>
+            <i className="fa-solid fa-pen-to-square"></i>
           </div>
         </div>
     </div>
