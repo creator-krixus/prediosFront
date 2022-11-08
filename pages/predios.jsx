@@ -5,6 +5,7 @@ import styles from '../styles/Predios.module.css'
 import client from '../GraphQL/Graphql.client'
 import { query } from "../GraphQL/Querys";
 
+
 export const getStaticProps = async () => {
     const data = await client.request(query)    
     return {

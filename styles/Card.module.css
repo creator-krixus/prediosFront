@@ -19,3 +19,29 @@
     margin-bottom: 10px;
     gap: 15px
 }
+.cajas{
+    margin-left: 20px;
+}
+.btns{
+    display: flex;
+    justify-content: center;
+    gap: 20px
+}
+.btnSave{
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: blue;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+.btnCancel{
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: red;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+}
