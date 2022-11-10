@@ -1,9 +1,23 @@
 import Layout from "../component/Layout"
 import styles from '../styles/Singup.module.css'
 import Image from 'next/image'
-import {gql} from 'graphql-request'
+import { gql } from 'graphql-request'
+import { useState as use } from "react"
 
 export default function singup() {
+    const [propietaryTwo, setPropietaryTwo] = use(false);
+    const [propietaryThree, setPropietaryThree] = use(false);
+    const [btnThree, setBtnThree] = use(false)
+
+    const addPropietary = () => {
+      setPropietaryTwo(true)
+      setPropietaryThree(true)
+    }
+
+    const addNewProperty = () => {
+      setBtnThree(true)
+    }
+  
     const handleSubmit = async (event) => {
       event.preventDefault()
     
@@ -15,7 +29,7 @@ export default function singup() {
             return (c == 'x' ? res : (res & 0x3 | 0x8)).toString(16);
         });
         return uuid;
-    }
+      }
   
       // Get data from the form.
       const data = {
@@ -109,8 +123,10 @@ export default function singup() {
         }
       })
       .then((data) => data.data);
-  
+      alert('Creada correctamente')
+      window.location.replace('/');
     }
+
   return (
     <Layout>
     <div className={styles.container}>
@@ -155,52 +171,66 @@ export default function singup() {
             <input className={styles.cajas} type="text" id="emailNumero1" name="emailNumero1" placeholder="Correo electronico" required/>
             <input className={styles.cajas} type="number" id="phoneNumero1" name="phoneNumero1" placeholder="Telefono" required/>
           </div>
+          { !propietaryTwo && 
+          <div className={styles.addProperty}><p>Añadir mas propietarios</p><i className="fa-solid fa-plus" onClick={addPropietary}></i></div>
+          }
           {/* propietario2================================================== */}
+          { propietaryTwo &&  
           <div>
-            <label htmlFor="propietario2">propietario 2</label>  
-            <input type="radio" id="propietario2" name="propietario2" value="dos"/>
-          </div>
-          <div className={styles.propietarios}>
-            <select id="tipoPropietario2" name="tipoPropietario2" className={styles.select}>
-              <option disabled="disabled" selected>Tipo de persona</option>
-              <option value="Persona Juridica">Persona Juridica</option>
-              <option value="Persona natural">Persona natural</option>
-            </select>
-            <select id="tipoDocumento2" name="tipoDocumento2" className={styles.select}>
-              <option disabled="disabled" selected>Tipo de documento</option>
-              <option value="Nit">NIT</option>
-              <option value="Cedula">Cedula</option>
-            </select>
-            <input className={styles.cajas} type="number" id="documentoNumero2" name="documentoNumero2" placeholder="Numero de documento"/>
-            <input className={styles.cajas} type="text" id="nombreNumero2" name="nombreNumero2" placeholder="Nombres"/>
-            <input className={styles.cajas} type="text" id="apellidoNumero2" name="apellidoNumero2" placeholder="Apellidos" />
-            <input className={styles.cajas} type="text" id="direccionNumero2" name="direccionNumero2" placeholder="Direccion" />
-            <input className={styles.cajas} type="text" id="emailNumero2" name="emailNumero2" placeholder="Correo electronico" />
-            <input className={styles.cajas} type="number" id="phoneNumero2" name="phoneNumero2" placeholder="Telefono"/>
-          </div>
+            <div>
+              <label htmlFor="propietario2">propietario 2</label>  
+              <input type="radio" id="propietario2" name="propietario2" value="dos"/>
+            </div>
+            <div className={styles.propietarios}>
+              <select id="tipoPropietario2" name="tipoPropietario2" className={styles.select}>
+                <option disabled="disabled" selected>Tipo de persona</option>
+                <option value="Persona Juridica">Persona Juridica</option>
+                <option value="Persona natural">Persona natural</option>
+              </select>
+              <select id="tipoDocumento2" name="tipoDocumento2" className={styles.select}>
+                <option disabled="disabled" selected>Tipo de documento</option>
+                <option value="Nit">NIT</option>
+                <option value="Cedula">Cedula</option>
+              </select>
+              <input className={styles.cajas} type="number" id="documentoNumero2" name="documentoNumero2" placeholder="Numero de documento"/>
+              <input className={styles.cajas} type="text" id="nombreNumero2" name="nombreNumero2" placeholder="Nombres"/>
+              <input className={styles.cajas} type="text" id="apellidoNumero2" name="apellidoNumero2" placeholder="Apellidos" />
+              <input className={styles.cajas} type="text" id="direccionNumero2" name="direccionNumero2" placeholder="Direccion" />
+              <input className={styles.cajas} type="text" id="emailNumero2" name="emailNumero2" placeholder="Correo electronico" />
+              <input className={styles.cajas} type="number" id="phoneNumero2" name="phoneNumero2" placeholder="Telefono"/>
+            </div>
+          </div>  
+          }
+          { propietaryThree && 
+          <div className={styles.addProperty}><p>Añadir mas propietarios</p><i className="fa-solid fa-plus" onClick={addNewProperty}></i></div>
+          }
           {/* propietario3======================================== */}
-          <div>
-            <label htmlFor="propietario3">propietario 3</label>  
-            <input type="radio" id="propietario3" name="propietario3" value="tres"/>
-          </div>
-          <div className={styles.propietarios}>
-            <select id="tipoPropietario3" name="tipoPropietario3" className={styles.select}>
-              <option disabled="disabled" selected>Tipo de persona</option>
-              <option value="Persona Juridica">Persona Juridica</option>
-              <option value="Persona natural">Persona natural</option>
-            </select>
-            <select id="tipoDocumento3" name="tipoDocumento3" className={styles.select}>
-              <option disabled="disabled" selected>Tipo de documento</option>
-              <option value="Nit">NIT</option>
-              <option value="Cedula">Cedula</option>
-            </select>
-            <input className={styles.cajas} type="number" id="documentoNumero3" name="documentoNumero3" placeholder="Numero de documento"/>
-            <input className={styles.cajas} type="text" id="nombreNumero3" name="nombreNumero3" placeholder="Nombres"/>
-            <input className={styles.cajas} type="text" id="apellidoNumero3" name="apellidoNumero3" placeholder="Apellidos" />
-            <input className={styles.cajas} type="text" id="direccionNumero3" name="direccionNumero3" placeholder="Direccion" />
-            <input className={styles.cajas} type="text" id="emailNumero3" name="emailNumero3" placeholder="Correo electronico" />
-            <input className={styles.cajas} type="number" id="phoneNumero3" name="phoneNumero3" placeholder="Telefono"/>
-          </div>
+          { btnThree && 
+            <div>
+              <div>
+                <label htmlFor="propietario3">propietario 3</label>  
+                <input type="radio" id="propietario3" name="propietario3" value="tres"/>
+              </div>
+              <div className={styles.propietarios}>
+                <select id="tipoPropietario3" name="tipoPropietario3" className={styles.select}>
+                  <option disabled="disabled" selected>Tipo de persona</option>
+                  <option value="Persona Juridica">Persona Juridica</option>
+                  <option value="Persona natural">Persona natural</option>
+                </select>
+                <select id="tipoDocumento3" name="tipoDocumento3" className={styles.select}>
+                  <option disabled="disabled" selected>Tipo de documento</option>
+                  <option value="Nit">NIT</option>
+                  <option value="Cedula">Cedula</option>
+                </select>
+                <input className={styles.cajas} type="number" id="documentoNumero3" name="documentoNumero3" placeholder="Numero de documento"/>
+                <input className={styles.cajas} type="text" id="nombreNumero3" name="nombreNumero3" placeholder="Nombres"/>
+                <input className={styles.cajas} type="text" id="apellidoNumero3" name="apellidoNumero3" placeholder="Apellidos" />
+                <input className={styles.cajas} type="text" id="direccionNumero3" name="direccionNumero3" placeholder="Direccion" />
+                <input className={styles.cajas} type="text" id="emailNumero3" name="emailNumero3" placeholder="Correo electronico" />
+                <input className={styles.cajas} type="number" id="phoneNumero3" name="phoneNumero3" placeholder="Telefono"/>
+              </div>
+            </div>
+          }
         <div className={styles.construcciones}>
             <div>
               <label htmlFor="construcciones">Construcciones</label>

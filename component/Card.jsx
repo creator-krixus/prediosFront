@@ -1,13 +1,13 @@
 import styles from '../styles/Card.module.css'
 import { gql } from 'graphql-request'
-import { useState  } from 'react'
+import { useState } from 'react'
 
 export default function Card({predio}) {
   
   const [show, setShow] = useState(true)
 
   const showEditPredio = () => {
-      setShow(false)
+    setShow(false)
   }
   const cancelar = () => {
     setShow(true)
@@ -22,39 +22,37 @@ export default function Card({predio}) {
       municipio: document.getElementsByName('municipio')[0].value
     }
     const query = gql `
-mutation{
-  updatePredio(updatePredioInput:{
-      id: "${data.id}"
-      avaluo: ${data.avaluo}
-      nombre: "${data.nombre}"
-      departamento: "${data.departamento}"
-      municipio: "${data.municipio}"
-  }){
-    id
-    avaluo
-  }
-}
-  `
-  const endpoint = 'http://localhost:3001/graphql'
+      mutation{
+        updatePredio(updatePredioInput:{
+            id: "${data.id}"
+            avaluo: ${data.avaluo}
+            nombre: "${data.nombre}"
+            departamento: "${data.departamento}"
+            municipio: "${data.municipio}"
+        }){
+          id
+          avaluo
+        }
+      }
+    `
+    const endpoint = 'http://localhost:3001/graphql'
 
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      "Accept": 'application/json'
-    },
-    body: JSON.stringify({ query: query })
-  }
-
-  const response = fetch(endpoint, options).then((response) => {
-    if (response.status >= 400) {
-      throw new Error("Error fetching data");
-    } else {
-      return response.json();
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": 'application/json'
+      },
+      body: JSON.stringify({ query: query })
     }
-  })
-  .then((data) => data.data);
-    
+
+    const response = fetch(endpoint, options).then((response) => {
+      if (response.status >= 400) {
+        throw new Error("Error fetching data");
+      } else {
+        return response.json();
+      }
+    }).then((data) => data.data);
   }
   
   const deletePrdedio = () => {
@@ -84,6 +82,8 @@ mutation{
       }
     })
     .then((data) => data.data);
+
+    window.location.reload(true)
   }
 
   return (

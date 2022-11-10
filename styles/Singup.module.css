@@ -55,6 +55,21 @@
     flex-direction: column;
     gap: 5px;
 }
+.addProperty{
+    display: flex;
+}
+.addProperty > i {
+    width: 30px;
+    height: 30px;
+    margin-top: 13px;
+    margin-left: 15px;
+    border-radius: 50%;
+    background-color: blue;
+    padding: 5px 7px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+}
 @media(max-width:768px) {
     .imagenTwo{
         width: 100%;
